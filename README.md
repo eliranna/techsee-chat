@@ -6,8 +6,9 @@ This example uses React, React-Redux, Redux-Saga and SocketIO.
 
 ### Flow
 
-To enable real-time messaging, we are using a socket between the server and the clients. 
-We also use a single HTTP call to retrieve all past messages.
+- To enable real-time messaging, we are using a socket between the server and the clients. 
+- We also use a single HTTP call to retrieve all past messages.
+- The server simply holds (in memory) a list of users and messages, and responds to socket events. (Should be added: an API to support the retrieval of all part messages).
 
 ### Structure
 
@@ -26,4 +27,3 @@ Another important point - With the use of generators, Redux-saga allows us to wr
 Reducers handle dispatched actions by modifying the state accordingly.
 
 [![Screen-Shot-2021-11-24-at-2-55-37-PM.png](https://i.postimg.cc/mkqkWLXN/Screen-Shot-2021-11-24-at-2-55-37-PM.png)](https://postimg.cc/JHNMbLWG)
-

@@ -1,9 +1,25 @@
-<<<<<<< HEAD
 # Chat app
 
 This example uses React, React-Redux, Redux-Saga and SocketIO.
 
 ## Design overview
+
+### Flow
+
+To enable real-time messaging, we are using a socket between the server and the clients. 
+We also use a single HTTP call to retrieve all past messages.
+
+### Structure
+
+We use the smart/dumb component architecture. UI components are wrapped by Redux containers. These containers are connected directly to the redux store.
+This creates a sharp separation between state and UI ("dumb" components can be reused in other context).
+
+### Redux Saga
+
+Redux Saga allows us to catch dispatched actions and handle them accordingly. It also allows us to handle socket events. 
+Another important point - With the use of generators, Redux-saga allows us to write asynchronous code as if it is synchronous. 
+
+
 
 [![Screen-Shot-2021-11-24-at-2-55-37-PM.png](https://i.postimg.cc/mkqkWLXN/Screen-Shot-2021-11-24-at-2-55-37-PM.png)](https://postimg.cc/JHNMbLWG)
 
@@ -12,9 +28,6 @@ This example uses React, React-Redux, Redux-Saga and SocketIO.
 
 
 
-=======
-# Techsee frontend chat app using React, React-Redux, Redux-Saga and SocketIO.
->>>>>>> 0db3aac19e217ec923bd0d69d182fb950d875f16
 
 
 ## Available Scripts

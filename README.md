@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Chat app
 
 This example uses React, React-Redux, Redux-Saga and SocketIO.
@@ -11,6 +12,9 @@ This example uses React, React-Redux, Redux-Saga and SocketIO.
 
 
 
+=======
+# Techsee frontend chat app using React, React-Redux, Redux-Saga and SocketIO.
+>>>>>>> 0db3aac19e217ec923bd0d69d182fb950d875f16
 
 
 ## Available Scripts

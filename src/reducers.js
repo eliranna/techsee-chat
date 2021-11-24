@@ -35,6 +35,14 @@ const users = createReducer({
 }, initial.users);
 
 const messages = createReducer({
+  [loadMessages]: (state, payload) => {
+    const { messages } = payload;
+    return {
+      ...state,
+      list: messages.map(message => message.id),
+      entities: messages
+    };
+  },
   [newMessage]: (state, payload) => {
     const { message } = payload;
     return {

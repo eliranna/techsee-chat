@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 import { eventChannel } from 'redux-saga';
 import { fork, take, call, put, cancel } from 'redux-saga/effects';
 import {
-  login, logout, addUser, removeUser, newMessage, sendMessage
+  login, logout, addUser, removeUser, newMessage, sendMessage, loadMessages
 } from './actions';
 
 function connect() {
@@ -28,6 +28,15 @@ function subscribe(socket) {
       emit(newMessage({ message }));
     });
     return () => {};
+  });
+}
+
+function fetchAllMessages() {
+  return fetch(FETCH_ALL_MESSAGES_API_ENDPOINT)
+  .then(res => res.json())
+  .then(data => ({ data }))
+  .catch(ex => {
+      return ({ex});
   });
 }
 
@@ -64,6 +73,8 @@ function* flow() {
     let { payload } = yield take(`${login}`);
     const socket = yield call(connect);
     socket.emit('login', { username: payload.username });
+    const messages = yield call(fetchAllMessages);
+    yield put(loadMessages, {messages});
     const task = yield fork(handleIO, socket);
     let action = yield take(`${logout}`);
     yield cancel(task);

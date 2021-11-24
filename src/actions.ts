@@ -10,6 +10,10 @@ import { UserInfo } from './models/UserInfo';
 // (b) Notify the server about a login
 export const login = createAction<LoginInfo>('login');
 
+// Dispatched once all past messages have been fetched.
+// This will trigger a change in the messages reducer (adding all past messages to state)
+export const loadMessages = createAction<Message[]>('load messages');
+
 // Dispatched when the user logs-out.
 // This will: 
 // (a) trigger a change in the app reducer

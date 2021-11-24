@@ -8,7 +8,7 @@ This example uses React, React-Redux, Redux-Saga and SocketIO.
 
 - To enable real-time messaging, we are using a socket between the server and the clients. 
 - We also use a single HTTP call to retrieve all past messages.
-- The server simply holds (in memory) a list of users and messages, and responds to socket events. (Should be added: an API to support the retrieval of all part messages).
+- The server simply holds (in memory) a list of users and messages, and responds to socket events. (Should be added: an API to support the retrieval of all part messages). Here I have use KOA because it's effortless. 
 
 ### Structure
 

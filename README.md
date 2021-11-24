@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Techsee frontend chat app using React, React-Redux, Redux-Saga and SocketIO.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

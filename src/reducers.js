@@ -10,8 +10,7 @@ const initial = {
   },
   users: {},
   messages: {
-    list: [],
-    entities: {}
+    list: []
   },
 };
 

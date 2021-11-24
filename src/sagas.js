@@ -15,6 +15,8 @@ function connect() {
 }
 
 function subscribe(socket) {
+  // Here we listen to messages from the socket, and convert them to an event channel of events to be handled.
+  // Each event describes a redux action that should be dispatched. 
   return eventChannel(emit => {
     socket.on('users.login', ({ username }) => {
       emit(addUser({ username }));
@@ -25,14 +27,13 @@ function subscribe(socket) {
     socket.on('messages.new', ({ message }) => {
       emit(newMessage({ message }));
     });
-    socket.on('disconnect', e => {
-      // TODO: handle
-    });
     return () => {};
   });
 }
 
 function* read(socket) {
+  // Makes sure to read the events and handle them one by one. 
+  // Each event describes a redux action that should be dispatched. 
   const channel = yield call(subscribe, socket);
   while (true) {
     let action = yield take(channel);
@@ -41,6 +42,8 @@ function* read(socket) {
 }
 
 function* write(socket) {
+  // Here we listen to sendMessage actions. 
+  // When an sendMessage action is being picked-up, we propagate the message to the server.
   while (true) {
     const { payload } = yield take(`${sendMessage}`);
     socket.emit('message', payload);
@@ -53,11 +56,13 @@ function* handleIO(socket) {
 }
 
 function* flow() {
+  // The general flow. 
+  // Upon Login, connect to the socket and notify the server about the new user. 
+  // Then, handle all read/write tasks.
+  // Finally, upon logout, kill all read/write tasks and notify the server. 
   while (true) {
     let { payload } = yield take(`${login}`);
-    console.log(payload)
     const socket = yield call(connect);
-    console.log(socket)
     socket.emit('login', { username: payload.username });
     const task = yield fork(handleIO, socket);
     let action = yield take(`${logout}`);

@@ -2,6 +2,13 @@
 
 This example uses React, React-Redux, Redux-Saga and SocketIO.
 
+important files: 
+- reducers.js: This is where the change in state occurs.
+- sagas.js: This is where we preform side effects.
+- actions.js: This is where we define all possible redux actions. 
+- ChatApp.js: This is where the app is implemented.
+- The containers directory
+
 ## Design overview
 
 ### Flow

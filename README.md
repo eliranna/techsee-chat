@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Chat app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This example uses React, React-Redux, Redux-Saga and SocketIO.
+
+## Design overview
+
+[![Screen-Shot-2021-11-24-at-2-55-37-PM.png](https://i.postimg.cc/mkqkWLXN/Screen-Shot-2021-11-24-at-2-55-37-PM.png)](https://postimg.cc/JHNMbLWG)
+
+
+
+
+
+
+
 
 ## Available Scripts
 

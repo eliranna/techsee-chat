@@ -67,6 +67,7 @@ function* handleIO(socket) {
 function* flow() {
   // The general flow. 
   // Upon Login, connect to the socket and notify the server about the new user. 
+  // Also, fetch all past messages via an HTTP call. 
   // Then, handle all read/write tasks.
   // Finally, upon logout, kill all read/write tasks and notify the server. 
   while (true) {

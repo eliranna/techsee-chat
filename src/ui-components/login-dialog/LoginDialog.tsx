@@ -6,14 +6,22 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { LoginInfo } from '../../models/LoginInfo';
 
-export default function LoginDialog(props: any) {
+// Using TypeScript to describe the component's properties structure.
+// Notice how we use a TypeScript function-type here. 
+type LoginDialogProps = {
+    login: (loginInfo: LoginInfo) => void
+}
+
+export default function LoginDialog(props: LoginDialogProps) {
 
     const [open, setOpen] = React.useState(true);
     const [username, setUsername] = useState('')
 
     const handleJoin = () => {
         if (username && username.length > 0) {
+            // props.login is available to this ui-component because it is wrapped by a container.
             props.login({username});
             setOpen(false);
         }
